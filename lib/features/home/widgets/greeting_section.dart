@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/utils/date_helpers.dart';
 
 class GreetingSection extends StatelessWidget {
   final String userName;
@@ -9,21 +10,10 @@ class GreetingSection extends StatelessWidget {
     this.userName = 'Gagan',
   });
 
-  String _getGreeting() {
-    final hour = DateTime.now().hour;
-    if (hour >= 5 && hour < 12) {
-      return 'Good Morning,';
-    } else if (hour >= 12 && hour < 17) {
-      return 'Good Afternoon,';
-    } else {
-      return 'Good Evening,';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final isDark = context.isDarkMode;
-    final greeting = _getGreeting();
+    final greeting = DateHelpers.timeOfDayGreeting;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
